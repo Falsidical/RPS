@@ -13,7 +13,7 @@
       <p>PORTABLE ROCK PAPER SCISSOR UNIT</p>
       <div class="indicators">
         <div class="indicator outline">
-          <div class="led"></div>
+          <div class="led" id="powerIndicator"></div>
           <span>POWER</span>
         </div>
         <div class="indicator outline">
@@ -23,20 +23,21 @@
       </div>
 
       <div class="screen">
-        <p class="gameStatus"></p>
+        <p id="gameStatusLabel"></p>
         <div class="images">
-          <img src="" alt="" class="playerImg" />
-          <img src="" alt="" class="computerImg" />
+          <img src="" alt="" id="playerImg" />
+          <img src="" alt="" id="computerImg" />
         </div>
+        <p id="screenDesc"></p>
       </div>
 
       <div class="scores outline">
         <div>
           <p>PLAYER SCORE</p>
-          <span id="humanScore">0</span>
+          <span id="humanScore"></span>
         </div>
         <div>
-          <span id="computerScore">0</span>
+          <span id="computerScore"></span>
           <p>COMPUTER SCORE</p>
         </div>
       </div>
@@ -44,7 +45,7 @@
       <div class="buttons">
         <div class="gameBtn outline">
           <span>ROCK</span>
-          <button class="button-pushable" role="button">
+          <button class="button-pushable" id="rockBtn" role="button" data-action="rock">
             <span class="button-edge"></span>
             <span class="button-shadow"></span>
             <span class="button-front"></span>
@@ -52,7 +53,7 @@
         </div>
         <div class="gameBtn outline">
           <span>PAPER</span>
-          <button class="button-pushable" role="button">
+          <button class="button-pushable" id="paperBtn" role="button" data-action="paper">
             <span class="button-edge"></span>
             <span class="button-shadow"></span>
             <span class="button-front"></span>
@@ -60,7 +61,7 @@
         </div>
         <div class="gameBtn outline">
           <span>SCISSORS</span>
-          <button class="button-pushable" role="button">
+          <button class="button-pushable" id="scissorsBtn" role="button" data-action="scissors">
             <span class="button-edge"></span>
             <span class="button-shadow"></span>
             <span class="button-front"></span>
@@ -72,8 +73,8 @@
         <div class="gameButtons outline">
           <button id="start">Start</button>
           <button id="reset">Reset</button>
-          <button id="reset">Log</button>
-          <button id="reset">Turn off</button>
+          <button id="toggleLogs">Log</button>
+          <button id="turnOff">Turn off</button>
         </div>
         <div class="label outline">
           ⚠️
