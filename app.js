@@ -1,17 +1,21 @@
+const startBtn = document.querySelector('#start');
+const resetBtn = document.querySelector('#reset');
+const btnSound = document.querySelector('audio[data-sound="btn"]');
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((btn) =>
+  btn.addEventListener('click', () => {
+    btnSound.currentTime = 0;
+    btnSound.play();
+  })
+);
+
 const hands = ['rock', 'paper', 'scissors'];
 let humanScore = 0;
 let computerScore = 0;
 
 function getComputerChoice() {
   return hands[Math.floor(Math.random() * 3)];
-}
-
-function getHumanChoice() {
-  let humanChoice;
-  do {
-    humanChoice = prompt('Rock | Paper | Scissors').toLowerCase();
-  } while (!hands.includes(humanChoice));
-  return humanChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -25,24 +29,3 @@ function playRound(humanChoice, computerChoice) {
     computerScore++;
   }
 }
-
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-
-    playRound(humanSelection, computerSelection);
-  }
-
-  if (humanScore === computerScore) {
-    console.log('Wow! its a tie!');
-  } else if (humanScore > computerScore) {
-    console.log('You won the game!');
-  } else {
-    console.log('You lost the game!');
-  }
-
-  console.log(`Final score: H: ${humanScore} C: ${computerScore}`);
-}
-
-playGame();

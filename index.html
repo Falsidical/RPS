@@ -7,5 +7,82 @@
     <script src="app.js" defer></script>
     <title>RPS</title>
   </head>
-  <body></body>
+  <body>
+    <div class="gamebody">
+      <h1>RPS-GUI 01X-A</h1>
+      <p>PORTABLE ROCK PAPER SCISSOR UNIT</p>
+      <div class="indicators">
+        <div class="indicator outline">
+          <div class="led"></div>
+          <span>POWER</span>
+        </div>
+        <div class="indicator outline">
+          <div class="led"></div>
+          <span>SHOW CONSOLE LOGS</span>
+        </div>
+      </div>
+
+      <div class="screen">
+        <p class="gameStatus"></p>
+        <div class="images">
+          <img src="" alt="" class="playerImg" />
+          <img src="" alt="" class="computerImg" />
+        </div>
+      </div>
+
+      <div class="scores outline">
+        <div>
+          <p>PLAYER SCORE</p>
+          <span id="humanScore">0</span>
+        </div>
+        <div>
+          <span id="computerScore">0</span>
+          <p>COMPUTER SCORE</p>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div class="gameBtn outline">
+          <span>ROCK</span>
+          <button class="button-pushable" role="button">
+            <span class="button-edge"></span>
+            <span class="button-shadow"></span>
+            <span class="button-front"></span>
+          </button>
+        </div>
+        <div class="gameBtn outline">
+          <span>PAPER</span>
+          <button class="button-pushable" role="button">
+            <span class="button-edge"></span>
+            <span class="button-shadow"></span>
+            <span class="button-front"></span>
+          </button>
+        </div>
+        <div class="gameBtn outline">
+          <span>SCISSORS</span>
+          <button class="button-pushable" role="button">
+            <span class="button-edge"></span>
+            <span class="button-shadow"></span>
+            <span class="button-front"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="end">
+        <div class="gameButtons outline">
+          <button id="start">Start</button>
+          <button id="reset">Reset</button>
+          <button id="reset">Log</button>
+          <button id="reset">Turn off</button>
+        </div>
+        <div class="label outline">
+          ⚠️
+          <p>WARNING: READ OPERATION MANUAL BEFORE USE</p>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+
+    <audio src="sounds/buttonSound.mp3" data-sound="btn"></audio>
+  </body>
 </html>

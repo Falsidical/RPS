@@ -1,10 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Silkscreen&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
 }
 
 body {
-  background-color: #333;
+  background-color: #111111;
+  color: #ffffffd8;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outline {
+  border: 1px solid #000000;
+  border-radius: 12px;
+}
+
+.gamebody {
+  background-position: center;
+  background-color: #4d4c4c;
+  background: radial-gradient(circle, #3d3d3d 45%, #131313 90%);
+  border: 4px solid rgb(0, 0, 0);
+  border-bottom: 18px solid black;
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+  padding: 16px;
+  text-shadow: 1px 1px rgb(122, 122, 122);
+}
+
+.gamebody > h1,
+.gamebody > p {
+  align-self: flex-start;
+}
+
+.screen {
+  border: 8px solid #000000;
+  width: 100%;
+  min-height: 220px;
+  border-radius: 12px;
+  background-color: #121212;
+  padding: 8px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.screen p {
+  font-family: 'Silkscreen', sans-serif;
+}
+
+.scores {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  align-items: center;
+  padding: 8px;
+}
+
+.scores > div {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.scores > div:nth-of-type(2) {
+  justify-content: flex-start;
+}
+
+#humanScore,
+#computerScore {
+  background-color: #111111;
+  padding: 1px 8px;
+  border-radius: 4px;
+}
+
+.images {
+  display: flex;
+  gap: 48px;
+}
+
+.indicators {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+.indicator {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  align-items: center;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.led {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #830000;
+  border: 2px solid black;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.gameBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 22px;
+  border-radius: 12px;
+  padding: 8px;
+  flex: 1;
+}
+
+/* button css starts here*/
+.button-pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.button-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: hsla(0, 0%, 0%, 0.25);
+  transform: translateY(8px);
+  transition: transform 400ms;
+}
+
+.button-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(to left, hsl(340deg 100% 16%) 0%, hsl(340deg 100% 32%) 8%, hsl(340deg 100% 32%) 92%, hsl(340deg 100% 16%) 100%);
+}
+
+.button-front {
+  display: block;
+  position: relative;
+  padding: 32px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-8px);
+  transition: transform 400ms;
+}
+
+.button-pushable:active .button-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.button-pushable:active .button-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+/* button css ends here*/
+
+#start,
+#reset {
+  text-transform: uppercase;
+  background-color: #111111;
+  background: linear-gradient(145deg, #2c2c2c 45%, #0a0a0a 90%);
   color: #eee;
+  padding: 4px 10px;
+  border-radius: 0;
+}
+
+.end {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+.end > div {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+}
+
+div.gameButtons {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr;
 }
