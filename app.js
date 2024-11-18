@@ -1,4 +1,5 @@
 const powerIndicator = document.querySelector('#powerIndicator');
+const debugIndicator = document.querySelector('#debugIndicator');
 const btnSound = document.querySelector('audio[data-sound="btn"]');
 const buttons = document.querySelectorAll('button');
 // 0,1,2 = RPS, 3=start, 4=reset, 5=log, 6=off
@@ -16,6 +17,7 @@ let systemStatus = 'off';
 let currentRound;
 let humanScore;
 let computerScore;
+let showLogs = false;
 
 buttons.forEach((btn) =>
   btn.addEventListener('click', () => {
@@ -39,7 +41,14 @@ for (let i = 0; i < 3; i++) {
 
 buttons[3].addEventListener('click', turnOn);
 buttons[4].addEventListener('click', playGame);
+buttons[5].addEventListener('click', toggleLogs);
 buttons[6].addEventListener('click', turnOff);
+
+function toggleLogs() {
+  if (systemStatus === 'off') return;
+  showLogs = !showLogs;
+  debugIndicator.classList.toggle('on');
+}
 
 function turnOn() {
   if (!systemStatus === 'off') return;
@@ -49,6 +58,7 @@ function turnOn() {
 
 function turnOff() {
   powerIndicator.classList.remove('on');
+  debugIndicator.classList.remove('on');
   systemStatus = 'off';
   screenTopText.innerText = '';
   screenBotText.innerText = '';
@@ -56,17 +66,20 @@ function turnOff() {
   computerScoreLabel.innerText = '';
   computerImg.removeAttribute('src');
   playerImg.removeAttribute('src');
+  showLogs = false;
+  roundCounterLabel.innerText = '';
 }
 
 function playGame() {
   humanScore = 0;
   computerScore = 0;
   currentRound = 1;
-
   updateScreenScore();
   screenTopText.innerText = 'GAME STARTED';
   screenBotText.innerText = 'MAKE A DECISION';
   systemStatus = 'playing';
+  playerImg.removeAttribute('src');
+  computerImg.removeAttribute('src');
 }
 
 function getComputerChoice() {
@@ -75,26 +88,29 @@ function getComputerChoice() {
 
 function playRound(humanChoice) {
   computerChoice = getComputerChoice();
+  showLogs && console.log(`Round #${currentRound} \n H: ${humanChoice} C:${computerChoice}`);
   playerImg.setAttribute('src', `img/${humanChoice}.png`);
   computerImg.setAttribute('src', `img/${computerChoice}.png`);
   screenBotText.innerText = 'ROUND OVER. PICK A NEW HAND';
 
   if (humanChoice === computerChoice) {
     screenTopText.innerText = 'Its a tie';
+    showLogs && console.log(`Its a tie`);
   } else if ((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') || (humanChoice === 'scissors' && computerChoice === 'paper')) {
-    console.log(`You win! ${humanChoice} beats ${computerChoice}`);
     screenTopText.innerText = 'You won this round';
+    showLogs && console.log(`Human won`);
     humanScore++;
   } else {
     screenTopText.innerText = 'Computer won this round';
+    showLogs && console.log(`Computer won`);
     computerScore++;
   }
 
   updateScreenScore();
 
   if (currentRound === 5) {
-    console.log('end round' + currentRound);
     systemStatus = 'gameOver';
+    showLogs && console.log('Game over');
     if (humanScore === computerScore) {
       screenTopText.innerText = `IT'S A TIE. ${humanScore} TO ${computerScore}`;
     } else {
@@ -105,4 +121,6 @@ function playRound(humanChoice) {
   } else {
     currentRound++;
   }
+
+  showLogs && console.log(`Score: P:${humanScore} C:${computerScore}`);
 }
